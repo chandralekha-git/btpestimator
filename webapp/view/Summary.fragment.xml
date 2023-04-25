@@ -1,0 +1,69 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog title="Summary Report" id="idDialogSumRep">
+        <content>
+         <Panel id="idPanelSumRep">
+
+          <Table width="auto" id="idTableSumRep" alternateRowColors="true" backgroundDesign="Solid" sticky="ColumnHeaders,HeaderToolbar" items="{oModelSumRep>/Objects}">
+          	<headerToolbar>
+			     <OverflowToolbar id="oftb1">
+				    <content>
+					   <Title id="titletable"  level="H2"/>
+					   <ToolbarSpacer id="ts1"/>
+					    <Button id="btn2" text="Download" icon="sap-icon://excel-attachment" press="onDataExport"/>
+					
+				    </content>
+			      </OverflowToolbar>
+		    </headerToolbar>
+           <columns>
+                <Column id="c1" minScreenWidth="Tablet" demandPopin="true">
+                   <Text id="t1" text="Complexity"/>
+                </Column>
+                <Column id="c2" minScreenWidth="Tablet" demandPopin="true">
+                     <Text id="t2" text="Report"/>
+                </Column>
+                <Column id="c3" minScreenWidth="Tablet" demandPopin="true">
+                      <Text id="t3" text="Interface"/>
+                </Column>
+                <Column id="c4" minScreenWidth="Tablet" demandPopin="true">
+                      <Text id="t4" text="Conversions"/>
+                </Column>
+                <Column id="c5" minScreenWidth="Tablet" demandPopin="true">
+                      <Text id="t5" text="Enhancements"/>
+                </Column>
+                  <Column id="c6" minScreenWidth="Tablet" demandPopin="true">
+                      <Text id="t6" text="Forms"/>
+                </Column>
+                  <Column id="c7" minScreenWidth="Tablet" demandPopin="true">
+                      <Text id="t7" text="Workflows"/>
+                </Column>
+                  <Column id="c8" minScreenWidth="Tablet" demandPopin="true">
+                      <Text id="t8" text="Total Objects"/>
+                </Column>
+                  <Column id="c9" minScreenWidth="Tablet" demandPopin="true">
+                      <Text id="t9" text="Efforts"/>
+                </Column>
+            </columns>
+             <items>
+                <ColumnListItem id="item0" type="Active">
+                    <cells>
+                        <Text id="txt1" text="{oModelSumRep>Complexity}"/>
+                        <Text id="txt2" text="{oModelSumRep>R}"/>
+                        <Text id="txt3" text="{oModelSumRep>I}"/>
+                        <Text id="txt4" text="{oModelSumRep>C}"/>
+                        <Text id="txt5" text="{oModelSumRep>E}"/>
+                        <Text id="txt6" text="{oModelSumRep>F}"/>
+                        <Text id="txt7" text="{oModelSumRep>W}"/>
+                        <Text id="txt8" text="{oModelSumRep>T}" />
+                        <Text id="txt9" text="{oModelSumRep>EF}" />
+                    </cells>
+                </ColumnListItem>
+             </items>
+           </Table>
+
+          </Panel>
+        </content>
+        <buttons>
+             <Button id="idbclose" text="Close" press="onPressCloseSumRep" type="Emphasized"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

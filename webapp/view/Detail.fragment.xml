@@ -1,0 +1,60 @@
+<core:FragmentDefinition xmlns:table="sap.ui.table" xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog title="Detail Report" id="idDialogDetRep">
+        <content>
+            <Panel id="idPanelDetRep">
+                <Table width="auto" id="idTableDetRep" alternateRowColors="true" backgroundDesign="Solid" sticky="ColumnHeaders,HeaderToolbar" items="{oModelDetRep>/attr}">
+                    <headerToolbar>
+                        <OverflowToolbar id="oftb1">
+                            <content>
+                            <Title id="titletable"  level="H2"/>
+                            <ToolbarSpacer id="ts1"/>
+                                <Button id="btn2" text="Download" icon="sap-icon://excel-attachment" press="onDataExportDet"/>
+                            </content>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                            <Column id="c2" minScreenWidth="Tablet" demandPopin="true" mergeDuplicates="true">
+                                <Text id="t2" text="Project Name"/>
+                            </Column>
+                            <Column id="c3" minScreenWidth="Tablet" demandPopin="true" mergeDuplicates="true">
+                                <Text id="t3" text="Object Name"/>
+                            </Column>
+                            <Column id="c4" minScreenWidth="Tablet" demandPopin="true" mergeDuplicates="true">
+                                <Text id="t4" text="RICEFW Type"/>
+                            </Column>
+                            <Column id="c5" minScreenWidth="Tablet" demandPopin="true">
+                                <Text id="t5" text="Sub Object Name"/>
+                            </Column>
+                            <Column id="c6" minScreenWidth="Tablet" demandPopin="true">
+                                <Text id="t6" text="Complexity"/>
+                                 <!--  <footer><Text id="foottxt1" text="Total Efforts"/></footer> -->
+                            </Column>
+                            <Column id="c7" minScreenWidth="Tablet" demandPopin="true">
+                                <Text id="t7" text="Efforts"/>
+                                <!--<footer><Text id="foottxt2"/></footer> -->
+
+                            </Column>
+                           
+                        </columns>
+                        <items>
+                            <ColumnListItem id="item0" type="Active">
+                                <cells>
+                                    <Text id="txt1" text="{oModelDetRep>projectName}"/>
+                                    <Text id="txt2" text="{oModelDetRep>objectName}"/>
+                                    <Text id="txt3" text="{oModelDetRep>ricefTypes}"/>
+                                    <Text id="txt4" text="{oModelDetRep>subObj}"/>         
+                                    <Text id="txt5" text="{oModelDetRep>complexity}"/>
+                                
+                                    <Text id="txt6" text="{oModelDetRep>effort}"/>
+                                   
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                </Table>
+            </Panel>
+        </content>
+        <buttons>
+             <Button id="idbclose" text="Close" press="onPressCloseDetRep" type="Emphasized"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

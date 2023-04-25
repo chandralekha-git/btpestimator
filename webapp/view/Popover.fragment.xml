@@ -1,0 +1,10 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover id="myPopover" showHeader="false"> 
+	  <content>    
+	    <Text id="txt1"/>   
+	
+	  </content>  	
+	</Popover>
+</core:FragmentDefinition>

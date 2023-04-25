@@ -1,0 +1,137 @@
+<mvc:View controllerName="zsap.ui5.btpestimator.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:f="sap.f"
+	xmlns:card="sap.f.cards"
+	xmlns:core="sap.ui.core">
+    <Page id="page" title="{i18n>title}">
+        <content>
+        <Toolbar id="tb1">
+           <Label id="lab1" text="{i18n>Project}" />
+		   	<ComboBox id="comboBoxProj"  items="{oModelProj>/attr}" change="onSelectProjectType">
+					<core:Item id="i1" key="{oModelProj>projectID}" text="{oModelProj>projectName}" />
+				</ComboBox>
+				<Button id="addprj" icon = "sap-icon://add" press="onPressAddNewPrj"/>
+				<Button id="deleteprj" icon = "sap-icon://delete" press="onPressDeletePrj"/>
+				<Label id="lab3" text="{i18n>Type}" />
+		     	 <Select id="idSelectType" change="onSelectionChangeType" autoAdjustWidth="true">
+				        <core:ListItem id="R" key="Report" text="{i18n>Report}" />
+                        <core:ListItem id="I" key="Interface" text="{i18n>Interface}" />
+                        <core:ListItem id="C" key="Conversions" text="{i18n>Conversions}" />
+						<core:ListItem id="E" key="Enhancements" text="{i18n>Enhancements}" />
+						<core:ListItem id="F" key="Forms" text="{i18n>forms}" />
+						<core:ListItem id="W" key="Workflows" text="{i18n>workflow}" />
+					</Select>
+					 <Label id="lab2" text="{i18n>Objectid}" />
+		   	    <ComboBox id="comboBoxObj"  items="{oModelObj>/attr}" change="onSelectionChangeObj">
+					<core:Item id="i2" key="{oModelObj>objectID}" text="{oModelObj>objectName}" />
+				</ComboBox>
+				<Button id="addSubobj" icon = "sap-icon://add" press="onPressAddNewObj"/>
+				<Button id="deleteobj" icon = "sap-icon://delete" press="onPressDeleteObj"/>
+				  <Label id="lab4" text="{i18n>subobjid}" />
+		     	   <ComboBox id="comboBoxSubObj"  items="{oModelSubObj>/attr}" change="onSelectionChangeSubObj">
+					  <core:Item id="item2" key="{oModelSubObj>subObjectID}" text="{oModelSubObj>subObjectType}" />
+				   </ComboBox>
+				<Button id="addobj" icon = "sap-icon://add" press="onPressAddNewSubObj"/> 
+				<Button id="deleteSubobj" icon = "sap-icon://delete" press="onPressDeleteSubObj"/>
+		</Toolbar>
+	<HBox id="hb2"> 
+        <f:Card id="card1" class="sapUiTinyMargin" width="950px">
+		  <f:header>
+			<card:Header id="cardhed1" title="{i18n>compcrit}" iconSrc="sap-icon://list" />
+		   </f:header>
+		<f:content>
+	<Table id="idProductsTable" sticky="ColumnHeaders,HeaderToolbar" alternateRowColors="true" backgroundDesign="Solid" items="{oModelTable>/attr}" includeItemInSelection="true" selectionChange="onSelectTable" mode="SingleSelectLeft">
+		<headerToolbar>
+			<OverflowToolbar id="ovt1">
+				<content>
+					<Select id="idComboBox" enabled="false" change="onPressRefreshRecords" autoAdjustWidth="false">
+						<core:ListItem id="li0" key="EMPTY" text="" />
+				        <core:ListItem id="li1" key="CAP" text="{i18n>cap}" />
+                        <core:ListItem id="li2" key="SAPUI" text="{i18n>fiori}" />
+                        <core:ListItem id="li3" key="PA" text="{i18n>automation}" />
+						<core:ListItem id="li4" key="RAP" text="{i18n>rap}" />
+						<core:ListItem id="li5" key="INAPPEXT" text="{i18n>inapp}" />
+						<core:ListItem id="li6" key="FORM" text="{i18n>forms}" />
+						<core:ListItem id="li7" key="INAPPFW" text="{i18n>workflow}" />
+						<core:ListItem id="li8" key="CDS" text="{i18n>cds}" />
+						<core:ListItem id="li9" key="CPI" text="{i18n>cpi}" />
+						<core:ListItem id="li10" key="API" text="{i18n>api}" />
+						<core:ListItem id="li11" key="ODATA" text="{i18n>odata}" />
+					</Select>
+				<Button id="idRefreshB" enabled="false" press="onPressRefreshRecords" icon="sap-icon://synchronize"/>
+				<Button id="idSaveB" enabled="false" press="onPressSaveRecords" icon="sap-icon://save"/>
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+		
+			<Column id="c1" minScreenWidth="Tablet" demandPopin="true">
+				<Text id="t1" text="Serial Number" />
+			</Column>
+			<Column id="c2" minScreenWidth="Tablet" demandPopin="true">
+				<Text id="t2" text="Complexity Criteria" />
+			</Column>
+			<Column id="c3" minScreenWidth="Desktop" demandPopin="true">
+				<Text id="t3" text="Input" />
+			</Column>
+			<Column id="c4" minScreenWidth="Desktop" demandPopin="true">
+				<Text id="t4" text="Info." />
+			</Column>
+			<Column id="c5" minScreenWidth="Desktop" demandPopin="true" visible="false">
+				<Text id="t5" text="Obtained Weight" visible="false"/>
+			</Column>
+			<Column id="col1" visible="false">
+			<Text id="tx1" text="Complexity ID"  visible="false"/>
+		</Column>
+		</columns>
+		<items>
+			<ColumnListItem id="cli1" vAlign="Middle" type="Active">
+				<cells>
+					
+					<Text id="txt1" text="{oModelTable>serialNo}"/>
+                    <Text id="txt2" text="{oModelTable>description}"/>
+                    <HBox id="hb1">
+					  	<StepInput id="si1" value="{oModelTable>eW}" validationMode="LiveChange" width="120px" visible = "true" change="onChangeStepInput" enabled="false" min="0" max="30"/>
+				        <CheckBox id="cb1" visible="false" select="onChangeStepInput"/>
+					 </HBox>
+                    <Button id="bu1" icon= "sap-icon://information" press="onClickInfo" ariaHasPopup="Dialog" enabled="false"/>
+                    <Text id="txt3" text="{oModelTable>obwght}" visible="false"/> 
+					<Text id="txt" text="{oModelTable>complexityID}" visible="false"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+		</f:content>
+	  </f:Card>
+	
+	<VBox id="vb1"> 
+	<f:Card id="card2" class="sapUiTinyMargin" width="300px">
+		<f:header>
+			<card:Header id="cardhed2" title="Complexity Details" iconSrc="sap-icon://detail-view"/>
+		</f:header>
+		<f:content>
+				<List id="ProductList"  binding="{oModelCompdet>/attr}">
+				<items>
+		              <DisplayListItem id="slit1" label="Complexity" value="{oModelCompdet>finalcomplexity}"/>
+					  <DisplayListItem id="slit2" label="Total Weight" value="{oModelCompdet>totalobtweght}"/>
+					    <DisplayListItem id="slit3" label="Efforts in hours" value="{oModelCompdet>effinhrs}"/> 
+	            </items>
+				</List>
+		</f:content>
+	</f:Card>
+      <f:Card id="card3" class="sapUiTinyMargin" width="300px">
+		<f:header>
+			<card:Header id="cardhed3" title="Reports" iconSrc="sap-icon://manager-insight"/>
+		</f:header>
+		<f:content>
+		<VBox id="p1" class="sapUiResponsiveMargin">
+		<Button id="sumrepbut" width="100%" text="Summary Report" icon="sap-icon://manager-insight" class="sapUiSmallMarginLeft" press="onClickSummaryReport"/>
+			<Button id="downrepbut" width="100%"  text="Detail Report" icon="sap-icon://manager-insight" class="sapUiSmallMarginLeft" press="onClickDetailReport"/>
+		</VBox>
+		</f:content>
+	  </f:Card>
+	  </VBox>
+	  </HBox>
+        </content>
+    </Page>
+</mvc:View>
